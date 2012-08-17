@@ -1,0 +1,92 @@
+﻿<phone:PhoneApplicationPage x:Class="VKMessenger.Auth"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="PortraitOrLandscape"
+                            Orientation="Portrait"
+                            mc:Ignorable="d"
+                            d:DesignHeight="768"
+                            d:DesignWidth="480"
+                            Margin="-6,-8,0,0"
+                            shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot представляет корневую сетку, где размещается все содержимое страницы-->
+    <Grid x:Name="LayoutRoot"
+          Margin="18,17,12,0"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="0"
+               Width="60"
+               Height="36"
+               HorizontalAlignment="Left"
+               Source="/VKMessenger;component/Resources/VK_logotype.png"
+               Margin="5,9,0,0" />
+
+        <!--ContentPanel – поместите здесь дополнительное содержимое-->
+        <StackPanel Grid.Row="1">
+            <TextBlock Margin="10,25,0,-5"
+                       Text="Номер телефона, логин или e-mail"
+                       Foreground="{StaticResource PhoneInverseInactiveBrush}"
+                       FontSize="19" />
+            <TextBox Name="loginTB"
+                     Margin="0" />
+            <TextBlock Margin="10,20,0,-5"
+                       FontSize="19"
+                       Foreground="{StaticResource PhoneInverseInactiveBrush}"
+                       Text="Пароль" />
+            <PasswordBox Margin="0"
+                         Name="passTB" />
+            <Button  Content="войти"
+                     Width="230"
+                     HorizontalAlignment="Left"
+                     Click="Button_Click"
+                     Margin="0,15,0,0"
+                     BorderBrush="#404040"
+                     Foreground="#404040" />
+            <Button HorizontalAlignment="Left"
+                    Width="455"
+                    HorizontalContentAlignment="Left"
+                    Margin="0,128,0,0">
+                <StackPanel Orientation="Vertical">
+
+                    <TextBlock Text="зарегистрироваться" />
+                    <TextBlock Foreground="#999999"
+                               FontSize="19.8"
+                               Text="Вы сможете бесплатно обмениваться мгновенными сообщениями с друзьями."
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,5"
+                               FontFamily="Segoe WP" />
+                </StackPanel>
+            </Button>
+            <phone:WebBrowser Name="web" Visibility="Collapsed"
+                              Height="120" />
+        </StackPanel>
+    </Grid>
+<shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsVisible="False"
+                                 IsIndeterminate="True"
+                                 Text="Авторизация..." />
+    </shell:SystemTray.ProgressIndicator>
+    <!--Пример кода, иллюстрирующий использование ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Кнопка 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Кнопка 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Элемент меню 1"/>
+                <shell:ApplicationBarMenuItem Text="Элемент меню 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>

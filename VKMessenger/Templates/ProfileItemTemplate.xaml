@@ -1,0 +1,73 @@
+﻿<ResourceDictionary  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:im="clr-namespace:ImageTools;assembly=ImageTools"
+                     xmlns:imagetoolsss="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="sss" TargetType="Button">
+        
+    </Style>
+    <DataTemplate x:Key="ProfileItemTemplate">
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85" />
+                <ColumnDefinition Width="355" />
+                <ColumnDefinition Width="15" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.RowSpan="2"
+                   Width="60"
+                   Height="60"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="25,13,0,0"
+                   Source="{Binding Photo}"></Image>
+            <imagetoolsss:AnimatedImage Grid.RowSpan="2"
+                                        Width="60"
+                                        Height="60"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="25,13,0,0"
+                                        Source="{Binding ExtendedImage, Converter={StaticResource ImageConverter}}" />
+            <Grid  Grid.RowSpan="2"
+                   Width="60"
+                   Height="60"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="25,13,0,0"
+                   Visibility="{Binding StartLetterVisibility}"
+                   Background="#FF1080DD">
+                <TextBlock Margin="7,-10,0,0"
+                           FontSize="52"
+                           Text="{Binding photo}"
+                           Foreground="White" />
+            </Grid>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding FullName}"
+                       TextWrapping="NoWrap"
+                       Style="{StaticResource PhoneTextExtraLargeStyle}"
+                       FontStretch="Condensed"
+                       FlowDirection="LeftToRight"
+                       FontSize="31"
+                       Margin="12,20,0,0"
+                       MaxWidth="350" />
+            <Ellipse  Grid.Column="2"
+                      Fill="#FFB8B8B8"
+                      Stretch="Uniform"
+                      StrokeEndLineCap="Flat"
+                      StrokeThickness="1"
+                      Width="7"
+                      Height="7"
+                      FlowDirection="RightToLeft"
+                      Margin="7,15,0,0"
+                      Visibility="{Binding OnlineVisibility}" />
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>
