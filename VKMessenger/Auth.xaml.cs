@@ -18,25 +18,20 @@ namespace VKMessenger
 {
     public partial class Auth : PhoneApplicationPage
     {
-        public VKService vk;
         public Auth()
         {
             InitializeComponent();
-<<<<<<< HEAD
             App.vk = new VKService(web);
-=======
-            vk = new VKService(web);
->>>>>>> Revert "вынес экземпляр класса VKService сюда"
             web.IsScriptEnabled = true;
-            vk.Authorized += new VKService.EventHandler(vk_Authorized);
+            App.vk.Authorized += new VKService.EventHandler(vk_Authorized);
         }
 
         void vk_Authorized()
         {
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
 
-            vk.FriendsGetComplited += new VKService.FriendsEventHandler(vk_FriendsGetComplited);
-            vk.FriendsGet(ProfileFields.uid | ProfileFields.first_name | ProfileFields.city);
+            App.vk.FriendsGetComplited += new VKService.FriendsEventHandler(vk_FriendsGetComplited);
+            App.vk.FriendsGet(ProfileFields.uid | ProfileFields.first_name | ProfileFields.city);
         }
 
         void vk_FriendsGetComplited(Profile[] list)
@@ -44,7 +39,7 @@ namespace VKMessenger
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vk.auth(loginTB.Text, passTB.Password);
+            App.vk.auth(loginTB.Text, passTB.Password);
             SystemTray.ProgressIndicator.IsVisible = true;
         }
     }

@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using VKMessengerLibrary;
 
 namespace VKMessenger
 {
@@ -34,7 +35,7 @@ namespace VKMessenger
                 return viewModel;
             }
         }
-        public static string ResQuery;
+        public static VKService vk { get; set; }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
