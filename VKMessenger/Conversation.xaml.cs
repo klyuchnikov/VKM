@@ -22,5 +22,13 @@ namespace VKMessenger
             if (!App.ViewModel.IsDataLoaded)
                 App.ViewModel.LoadData();
         }
+
+        private void messages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (ItemViewModel a in messages.ItemsSource)
+                a.IsSelected = false;
+            foreach (ItemViewModel a in messages.SelectedItems)
+                a.IsSelected = true;
+        }
     }
 }

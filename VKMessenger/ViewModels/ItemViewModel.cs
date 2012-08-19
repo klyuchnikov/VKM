@@ -13,26 +13,50 @@ using System.Windows.Shapes;
 
 namespace VKMessenger
 {
-    public class ItemViewModel : INotifyPropertyChanged 
+    public class ItemViewModel : INotifyPropertyChanged
     {
+        public bool Out { get; set; }
+
+        public bool IsNoSend { get; set; }
+
+        public bool IsNoRead { get; set; }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+                if (Selected != null)
+                    Selected(this, new EventArgs());
+                NotifyPropertyChanged("IsSelected");
+            }
+        }
+
+        public event EventHandler Selected;
+
         private string _lineOne;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
-        public string LineOne 
+        public string LineOne
         {
-            get 
+            get
             {
                 return _lineOne;
             }
-            set 
+            set
             {
                 _lineOne = value;
                 NotifyPropertyChanged("LineOne");
             }
         }
-        
+
         private string _lineTwo;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
@@ -70,9 +94,9 @@ namespace VKMessenger
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName) 
+        private void NotifyPropertyChanged(String propertyName)
         {
-            if (null != PropertyChanged) 
+            if (null != PropertyChanged)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }

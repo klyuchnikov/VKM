@@ -1,0 +1,93 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignData SampleData/SampleDataMessage.xaml}"
+             x:Class="VKMessenger.MessageItemControl"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             Loaded="UserControl_Loaded"
+             Name="uc">
+    <UserControl.Resources>
+        <Color x:Key="ColorMyMessage">#0b5a9b</Color>
+        <Color x:Key="ColorOtherMessage">#1080dd</Color>
+        <SolidColorBrush  x:Key="BrushMyMessage"
+                          Color="{StaticResource ColorMyMessage}" />
+        <SolidColorBrush  x:Key="BrushOtherMessage"
+                          Color="{StaticResource ColorOtherMessage}" />
+        <SolidColorBrush x:Key="BaseText"
+                         Color="#9dbdd7" />
+        <SolidColorBrush x:Key="BrushSelectMessage"
+                         Color="#094679" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Margin="95,0,0,20"
+          Background="Transparent">
+        <StackPanel Orientation="Vertical">
+            <Polygon Points="15, 0 15, 15 30, 15"
+                     Name="NoMyM"
+                     StrokeThickness="0"
+                     Fill="{Binding ElementName=GridMessage, Path=Background}" />
+            <Grid Name="GridMessage"
+                  Width="335"
+                  Background="{StaticResource BrushMyMessage}">
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto" />
+                    <RowDefinition  Height="30" />
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="22.6"
+                           Text="{Binding LineTwo}"
+                           Margin="12,5,12,0"
+                           TextWrapping="Wrap" />
+                <TextBlock Grid.Row="1"
+                           x:Name="DateMessage"
+                           Text="12:15"
+                           Margin="0,0,10,0"
+                           Foreground="{StaticResource BaseText}"
+                           FontSize="19.8"
+                           FlowDirection="RightToLeft" />
+                <StackPanel Grid.Row="1"
+                            Name="NoReadMessage"
+                            Margin="10,0,0,0"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="19.8"
+                               Foreground="{StaticResource BaseText}"
+                               Text="Не прочитано" />
+                    <Path Stroke="{StaticResource BaseText}"
+                          Margin="125,0,0,0"
+                          FlowDirection="RightToLeft"
+                          StrokeThickness="2">
+                        <Path.Data>
+                            <GeometryGroup>
+                                <LineGeometry StartPoint="50,15"
+                                              EndPoint="45,20" />
+                                <LineGeometry StartPoint="46.2,20"
+                                              EndPoint="39,10" />
+                            </GeometryGroup>
+                        </Path.Data>
+                    </Path>
+                </StackPanel>
+                <StackPanel Grid.Row="1"
+                            Visibility="Collapsed"
+                            Name="NoSendMessage"
+                            Margin="10,0,0,0"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="19.8"
+                               Foreground="{StaticResource BaseText}"
+                               Text="Не удалось отправить. " />
+                    <TextBlock TextDecorations="Underline"
+                               Text="Повторить" />
+                </StackPanel>
+
+            </Grid>
+            <Polygon Points="309, 0 324, 0 324, 15"
+                     Name="MyM"
+                     StrokeThickness="0"
+                     Fill="{Binding ElementName=GridMessage, Path=Background}" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>
